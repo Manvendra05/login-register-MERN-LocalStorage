@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
 import mongoose from "mongoose"
+import User from "./models/employee.js"
 
 const app = express()
 app.use(express.json())
@@ -14,13 +15,6 @@ mongoose.connect("mongodb://localhost:27017/myLoginRegisterDB", {
     console.log("DB connected")
 })
 
-const userSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    password: String
-})
-
-const User = new mongoose.model("User", userSchema)
 
 //Routes
 app.post("/login", (req, res)=> {
